@@ -5,7 +5,7 @@ namespace EasyHelper
 {
     public partial class frmSettings : Form
     {
-
+        bool forseclose = false;
         private Form currentchildForm;
 
         public frmSettings()
@@ -32,10 +32,10 @@ namespace EasyHelper
         {
             RecordsManager.Add(new Record { Id = 1, Command = "cmd", Arguments = "/C ping 217.29.30.220 -t", Modificator = Mdificator.Alt, Key = Keys.Z });
             RecordsManager.Add(new Record { Id = 2, Command = "cmd", Arguments = "/C ping 217.29.30.220 -t", Modificator = Mdificator.Control, Key = Keys.X });
-            
+
             HotKeyRegistratorManager.Registrator = new HotKeyRegistrator();
             HotKeyRegistratorManager.Registrator.RegisterHotKeys();
-            
+
             ShowChildForm(new frmDetales());
         }
 
@@ -52,6 +52,31 @@ namespace EasyHelper
         private void lblLogo_Click(object sender, EventArgs e)
         {
             ShowChildForm(new frmDetales());
+        }
+
+        private void frmSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!forseclose)
+            {
+                e.Cancel = true;
+                this.Hide();
+            }
+        }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            forseclose = true;
+            Application.Exit();
+        }
+
+        private void показатьОкноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
         }
     }
 }
