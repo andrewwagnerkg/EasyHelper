@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnSettings = new FontAwesome.Sharp.IconButton();
@@ -46,7 +47,8 @@
             // 
             // notifyIcon
             // 
-            this.notifyIcon.Text = "notifyIcon1";
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "EasyHelper";
             this.notifyIcon.Visible = true;
             // 
             // panelMenu
